@@ -1,6 +1,8 @@
 # UrlMinify
 Url Minify Web Service
 
+
+
 Used technologies
 
 Asp.Net Core 6.0
