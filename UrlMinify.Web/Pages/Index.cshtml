@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>URL Minify Web Service</p>
+
+    <br /><br /><br />
+
+    <div style="width:400px;margin:auto;">
+    <form method="post" asp-page="index">
+        @Html.AntiForgeryToken()
+        <input type="url" class="form-control" name="url" placeholder="write url"/><br />
+        <input type="submit" value="Generate Minified" />
+
+        <br /><br />
+            @{
+                if (!String.IsNullOrWhiteSpace(Model.minifiedUrl))
+                {
+                    
+                    <p>Generated URL (Click to test it)</p>
+                    <a asp-page="/index" asp-page-handler="Navigate2" asp-route-key="@Model.minifiedUrl">@Html.Raw($"{Model.AppBaseUrl}{Model.minifiedUrl}")</a>
+                }
+            }
+        </form>
+        </div>
+    </div>
